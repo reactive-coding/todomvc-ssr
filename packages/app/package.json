@@ -29,5 +29,8 @@
       "not op_mini all",
       "ie 11"
     ]
+  },
+  "devDependencies": {
+    "@svgr/cli": "^2.1.1"
   }
 }
