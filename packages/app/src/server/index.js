@@ -1,26 +1,28 @@
-import express from 'express';
+import express from 'express'
 
-import serverRender from './middleware/renderer';
+import serverRender from './middleware/renderer'
 
-const PORT = 3000;
-const path = require('path');
+const PORT = 3000
+const path = require('path')
 
-const app = express();
-const router = express.Router();
+const app = express()
+const router = express.Router()
 
-router.use('^/$', serverRender);
-
-router.use('*', serverRender);
+router.use('^/$', serverRender)
 
 router.use(
-  express.static(path.resolve(__dirname, '..', 'build'), { maxAge: '30d' })
-);
+  express.static(path.resolve(__dirname, '..', '..', 'build'), {
+    maxAge: '30d',
+  }),
+)
 
-app.use(router);
+router.use('*', serverRender)
+
+app.use(router)
 
 app.listen(PORT, error => {
   if (error) {
-    return console.log('something bad happened', error);
+    return console.log('something bad happened', error)
   }
-  console.log(`app started at localhost:${PORT}`);
-});
+  console.log(`app started at localhost:${PORT}`)
+})
